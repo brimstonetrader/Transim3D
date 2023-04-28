@@ -34,19 +34,19 @@ public class Roads_and_Trails : MonoBehaviour
         print(Intizer(GetMousePos()));
         tilemap.SetTile(Intizer(worldPosition), road);   
         lineBool = true;
-        dummy = Intizer(worldPosition)
+        dummy = Intizer(worldPosition);
         }
-    if((Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(1)) && lineBool)
-        {
-        dummz = Intizer(GetMousePos())
-        if (dummz != dummy) {if (Mathf.Abs(dummz.x - dummy.x) > Mathf.Abs(dummz.y - dummy.y))}
-        for (int i = 0; i < Mathf.Abs(dummz.x - dummy.x); i++) 
-        {
-        if (dummz.x - dummy.x > 0) tilemap.SetTile(new Vector3Int (i +dummyx), trail);
-        }
-        tilemap.SetTile(Intizer(worldPosition), trail);
-        lineBool = false;
-        }
+    //if((Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(1)) && lineBool)
+        //{
+        //dummz = Intizer(GetMousePos());
+        // if (dummz != dummy) {if (Mathf.Abs(dummz.x - dummy.x) > Mathf.Abs(dummz.y - dummy.y))};
+        //for (int i = 0; i < Mathf.Abs(dummz.x - dummy.x); i++) 
+        //{
+        //if (dummz.x - dummy.x > 0) tilemap.SetTile(new Vector3Int (i +dummyx), trail);
+        //}
+        //tilemap.SetTile(Intizer(worldPosition), trail);
+        //lineBool = false;
+        //}
     
     }    
 

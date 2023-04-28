@@ -7,10 +7,12 @@ public class MoveCamera : MonoBehaviour
     private int speed = 10;
     public Camera camera;
 
+    private bool DisableZ;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        DisableZ = false;
     }
 
     // Update is called once per frame
@@ -40,5 +42,9 @@ public class MoveCamera : MonoBehaviour
      {
          camera.fieldOfView *= 0.998f;
      }
- }
+     if (Input.GetKey(KeyCode.Z) & (camera.fieldOfView == 8.65415f)); 
+     {
+        DisableZ = false;
+     }
+    }
 }
