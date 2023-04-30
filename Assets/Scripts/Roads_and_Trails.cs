@@ -1,3 +1,4 @@
+using System.Numerics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,14 +7,14 @@ using UnityEngine.Tilemaps;
 
 public class Roads_and_Trails : MonoBehaviour
 {
-    private Vector3 _dragOffset;
+    private UnityEngine.Vector3 _dragOffset;
     private Camera _cam;
+    public GameObject roadNavM;
     public Tilemap tilemap;
     public TileBase road;
-    public TileBase trail;
-    private Vector3 worldPosition;
+    private UnityEngine.Vector3 worldPosition;
     private Vector3Int dummy;
-    public bool lineBool = false;
+    private bool lineBool = false;
 
     void Awake() 
     {
@@ -28,42 +29,54 @@ public class Roads_and_Trails : MonoBehaviour
     if(Physics.Raycast(ray, out hitData, 1000))
     {
         worldPosition = hitData.point;
+        print(worldPosition);
     }
     if(Input.GetMouseButtonDown(0) && !lineBool)
         {
-        print(Intizer(GetMousePos()));
-        tilemap.SetTile(Intizer(worldPosition), road);   
-        lineBool = true;
-        dummy = Intizer(worldPosition)
-        }
-    if((Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(1)) && lineBool)
-        {
-        dummz = Intizer(GetMousePos())
-        if (dummz != dummy) {if (Mathf.Abs(dummz.x - dummy.x) > Mathf.Abs(dummz.y - dummy.y))}
-        for (int i = 0; i < Mathf.Abs(dummz.x - dummy.x); i++) 
-        {
-        if (dummz.x - dummy.x > 0) tilemap.SetTile(new Vector3Int (i +dummyx), trail);
-        }
-        tilemap.SetTile(Intizer(worldPosition), trail);
-        lineBool = false;
-        }
+        dummy = Intizer(worldPosition);
+        tilemap.SetTile(dummy, road);   
+        Instantiate(roadNavM, GridAligner(worldPosition), UnityEngine.Quaternion.Euler(0,90,0));
+        }}
+    // if((Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(1)) && lineBool)
+    //     {
+    //     dummz = Intizer(GetMousePos());
+    //     if (dummz != dummy) {if (Mathf.Abs(dummz.x - dummy.x) > Mathf.Abs(dummz.y - dummy.y))
+    //     for (int i = 0; i < Mathf.Abs(dummz.x - dummy.x); i++) 
+    //     {
+    //     if (dummz.x - dummy.x > 0) tilemap.SetTile(new Vector3Int (i +dummyx), trail);
+    //     }
+    //     tilemap.SetTile(Intizer(worldPosition), trail);
+    //     lineBool = false;
+    //     }
     
-    }    
-
-
-
     void OnMouseDrag() 
     {
         transform.position = GetMousePos() + _dragOffset;
     }
 
-    Vector3 GetMousePos()
+    UnityEngine.Vector3 GetMousePos()
     {
         var mousePos = _cam.ScreenToWorldPoint(Input.mousePosition);
         return mousePos;
     }
 
-    Vector3Int Intizer(Vector3 floatnasty) {
+    UnityEngine.Vector3 GridAligner(UnityEngine.Vector3 pos) {
+        float mxmin =  -33.3f;
+        float mxmax =  36.54f;
+        float mymin =  -26.7f;
+        float mymax =  18.91f;
+        float xmin  = -33.21f;
+        float xmax  =  34.15f;
+        float ymin  =  -26.6f;
+        float ymax  =  18.85f;
+        float yi    =    5.5f;
+        float xi    = (pos.x * ((mxmax-mxmin)/(xmax-xmin))); 
+        float zi    = (pos.z * ((mymax-mymin)/(ymax-ymin))); 
+        return (new UnityEngine.Vector3(xi,yi,zi));
+    }        
+
+
+    Vector3Int Intizer(UnityEngine.Vector3 pos) {
 //     Vector3Int GridAligner(UnityEngine.Vector3 pos) {
 //         int xmin  = -50;
 //         int xmax  = 15;
@@ -78,8 +91,8 @@ public class Roads_and_Trails : MonoBehaviour
 //         int zi = (int)Math.Round(pos.z); 
 //         return (new Vector3Int (xi,yi,zi));
 //     }
-        int xi = (int)Math.Round(floatnasty.x * 136/65); 
-        int yi = (int)Math.Round(floatnasty.z * 92/45); 
+        int xi = (int)Math.Round(pos.x * 136f/67.36f); 
+        int yi = (int)Math.Round(pos.z *  92f/45.45f); 
         int zi = 1; 
         return (new Vector3Int (xi,yi,zi));
     }
