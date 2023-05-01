@@ -118,3 +118,13 @@ public class Roads_and_Trails : MonoBehaviour
     }
 }
 
+//     Vector3Int GridAligner(Vector3 mPos) {
+//         float xmax   =  34.19f;
+//         float xmin   = -33.27f;
+//         float ymax   = -26.75f;
+//         float ymin   = -18.18f;
+        
+//         float  gxmax =     68f;
+//         float  gxmin =    -67f;
+//         float  gymax =     37f;
+//         float  gymin =    -54f;
