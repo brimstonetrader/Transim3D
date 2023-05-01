@@ -99,6 +99,18 @@ public class FSM_Human : MonoBehaviour
         if ((timer > 200) &&  !homed) {homed =  true; ChangeState(new BaseState("Home", this));}
     }
 
+    public void OnTriggerEnter(Collider collider) {
+        StartCoroutine("Beep");
+        StopCoroutine("Beep");
+        print("Entered..");
+        if (GetComponent<Collider2D>().gameObject.CompareTag("Player")) {
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collider2D) {
+        if (collider2D.gameObject.CompareTag("Player")) {
+        }
+    }
+
     void LateUpdate()
     {
         if (currentState != null)

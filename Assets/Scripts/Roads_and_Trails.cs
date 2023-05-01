@@ -17,15 +17,21 @@ public class Roads_and_Trails : MonoBehaviour
     public TileBase trail;
     public TileBase obs;
     private UnityEngine.Vector3 worldPosition;
-    private Vector3Int dummy;
-
+    private Vector3Int dummy;  
+    public Transform[] objectsToRotate;
+    
     void Awake() 
     {
         _cam = Camera.main;
     }
 
-    void Update()
-    {                        // www.gamedevbeginner.com/how-to-convert-the-mouse-position-to-world-space-in-unity-2d-3d/#screen_to_world_3d
+
+
+
+    // Use this for initialization
+    void Update () 
+    {
+                                   // www.gamedevbeginner.com/how-to-convert-the-mouse-position-to-world-space-in-unity-2d-3d/#screen_to_world_3d
     float distance;
     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     RaycastHit hitData;
@@ -36,21 +42,18 @@ public class Roads_and_Trails : MonoBehaviour
     if(Input.GetMouseButtonDown(0)) {
         dummy = Intizer(worldPosition);
         tilemap.SetTile(dummy, road);   
-        Instantiate(roadNavM, GridAligner(worldPosition), UnityEngine.Quaternion.Euler(0,90,0));
+        Instantiate(roadNavM, GridAligner(worldPosition),  UnityEngine.Quaternion.Euler(0,90,0));
         }
     if(Input.GetMouseButtonDown(1)) {
         dummy = Intizer(worldPosition);
-        tilemap.SetTile(dummy, trail);   
+        tilemap.SetTile(dummy, trail); 
         Instantiate(trailNavM, GridAligner(worldPosition), UnityEngine.Quaternion.Euler(0,90,0));
         }        
     if(Input.GetKeyDown(KeyCode.Space)) {
         dummy = Intizer(worldPosition);
-        tilemap.SetTile(dummy, obs);   
-        Instantiate(obsNavM, GridAligner(worldPosition), UnityEngine.Quaternion.Euler(0,90,0));
-        }                
-        
-        
-        }
+        tilemap.SetTile(dummy, obs);    
+        Instantiate(obsNavM, GridAligner(worldPosition),  UnityEngine.Quaternion.Euler(0,90,0));
+        }}
     // if((Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(1)) && lineBool)
     //     {
     //     dummz = Intizer(GetMousePos());
