@@ -19,6 +19,7 @@ public class Roads_and_Trails : MonoBehaviour
     private UnityEngine.Vector3 worldPosition;
     private Vector3Int dummy;  
     public Transform[] objectsToRotate;
+    public int money = 250;
     
     void Awake() 
     {
@@ -39,15 +40,17 @@ public class Roads_and_Trails : MonoBehaviour
         worldPosition = hitData.point;
         print(worldPosition);
         }
-    if(Input.GetMouseButtonDown(0)) {
+    if(Input.GetMouseButtonDown(0) && (money > 0)) {
         dummy = Intizer(worldPosition);
         tilemap.SetTile(dummy, road);   
         Instantiate(roadNavM, GridAligner(worldPosition),  UnityEngine.Quaternion.Euler(0,90,0));
+        money--;
         }
-    if(Input.GetMouseButtonDown(1)) {
+    if(Input.GetMouseButtonDown(1) && (money > 0)) {
         dummy = Intizer(worldPosition);
         tilemap.SetTile(dummy, trail); 
         Instantiate(trailNavM, GridAligner(worldPosition), UnityEngine.Quaternion.Euler(0,90,0));
+        money--;
         }        
     if(Input.GetKeyDown(KeyCode.Space)) {
         dummy = Intizer(worldPosition);

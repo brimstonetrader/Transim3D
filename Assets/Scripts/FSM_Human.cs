@@ -16,8 +16,8 @@ public class FSM_Human : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public UnityEngine.AI.NavMeshAgent agent;
     public TimeClock clock;
+    public Roads_and_Trails rat;
     BaseState currentState;
-
     public float lerpduration = 5;
     public int timer = 0;
     public int days =  0;
@@ -53,6 +53,7 @@ public class FSM_Human : MonoBehaviour
     private UnityEngine.Vector3 loc17;
     private UnityEngine.Vector3 loc18;
     private UnityEngine.Vector3 loc19;
+    private int money;
     
     List<UnityEngine.Vector3> locs;
     
@@ -60,24 +61,24 @@ public class FSM_Human : MonoBehaviour
     void Start()
     {
         currentState = new BaseState("Work", this);
-        loc1 = new UnityEngine.Vector3  ( -4.64f,-0.43f,23.52f);
-        loc2 = new UnityEngine.Vector3  ( -24.6f,-0.43f,26.8f);
-        loc3 = new UnityEngine.Vector3  (-18.57f,-0.43f,23.77f);
-        loc4 = new UnityEngine.Vector3  (-12.72f,-0.43f,18.6f);
-        loc5 = new UnityEngine.Vector3  ( -20.7f,-0.43f,18.6f);
-        loc6 = new UnityEngine.Vector3  ( -25.5f,-0.43f,17.1f);
-        loc7 = new UnityEngine.Vector3  ( -15.9f,-0.43f,26.9f);        
-        loc8 = new UnityEngine.Vector3  ( -11.3f,-0.47f,-9.19f);
-        loc9 = new UnityEngine.Vector3  (  -5.8f,-0.43f,17.1f);
-        loc10 = new UnityEngine.Vector3 (  11.5f,-0.43f,26.9f);        
+        loc1  = new UnityEngine.Vector3 ( -4.64f,-0.43f,23.52f);
+        loc2  = new UnityEngine.Vector3 ( -24.6f,-0.43f, 26.8f);
+        loc3  = new UnityEngine.Vector3 (-18.57f,-0.43f,23.77f);
+        loc4  = new UnityEngine.Vector3 (-12.72f,-0.43f, 18.6f);
+        loc5  = new UnityEngine.Vector3 ( -20.7f,-0.43f, 18.6f);
+        loc6  = new UnityEngine.Vector3 ( -25.5f,-0.43f, 17.1f);
+        loc7  = new UnityEngine.Vector3 ( -15.9f,-0.43f, 26.9f);        
+        loc8  = new UnityEngine.Vector3 ( -11.3f,-0.47f,-9.19f);
+        loc9  = new UnityEngine.Vector3 (  -5.8f,-0.43f, 17.1f);
+        loc10 = new UnityEngine.Vector3 (  11.5f,-0.43f, 26.9f);        
         loc11 = new UnityEngine.Vector3 (  33.4f,-0.47f,-9.19f);
-        loc12 = new UnityEngine.Vector3 (  10.7f,-0.43f,17.1f);
-        loc13 = new UnityEngine.Vector3 ( 17.24f,-0.43f,26.9f);        
+        loc12 = new UnityEngine.Vector3 (  10.7f,-0.43f, 17.1f);
+        loc13 = new UnityEngine.Vector3 ( 17.24f,-0.43f, 26.9f);        
         loc14 = new UnityEngine.Vector3 (  9.96f,-0.47f,-9.19f);
-        loc15 = new UnityEngine.Vector3 (  10.1f,-0.43f,17.1f);
-        loc16 = new UnityEngine.Vector3 (  19.4f,-0.43f,26.9f);        
-        loc17 = new UnityEngine.Vector3 (  20.5f,-0.43f,16.7f);
-        loc18 = new UnityEngine.Vector3 ( 29.24f,-0.43f,26.5f);  
+        loc15 = new UnityEngine.Vector3 (  10.1f,-0.43f, 17.1f);
+        loc16 = new UnityEngine.Vector3 (  19.4f,-0.43f, 26.9f);        
+        loc17 = new UnityEngine.Vector3 (  20.5f,-0.43f, 16.7f);
+        loc18 = new UnityEngine.Vector3 ( 29.24f,-0.43f, 26.5f);  
         loc19 = new UnityEngine.Vector3 (  34.1f,-0.47f,16.58f);  
 
         locs = new List<UnityEngine.Vector3>() {loc1, loc2, loc3, loc4, loc5, loc6, loc7, loc8, loc9, loc10, loc11, loc12, loc13, loc14, loc15, loc16, loc17, loc18, loc19};
@@ -94,6 +95,7 @@ public class FSM_Human : MonoBehaviour
             currentState.UpdateLogic();
         if (((clock.GetTimer() % daylength) - timer) < 0) { days++; worked = false; vibed = false; homed = false; }
         timer += ((clock.GetTimer() % daylength) - timer);
+        money = rat.money;
         if ((timer > 10)  && !worked) {worked = true; ChangeState(new BaseState("Work", this));}
         if ((timer > 100) &&  !vibed) {vibed =  true; ChangeState(new BaseState("Vibe", this));}
         if ((timer > 200) &&  !homed) {homed =  true; ChangeState(new BaseState("Home", this));}
@@ -150,7 +152,7 @@ public class FSM_Human : MonoBehaviour
 
     private void OnGUI()
     {
-        string content = currentState != null ? " State:  " + currentState.name + "            time: " + timer.ToString() + "             days: " + days.ToString(): "";
+        string content = currentState != null ? " State:  " + currentState.name + "money:          " + money.ToString() + "            time: " + timer.ToString() + "             days: " + days.ToString(): "";
         GUILayout.Label($"<color='black'><size=30>{content}</size></color>");
     }
 }
