@@ -11,16 +11,13 @@ public class Roads_and_Trails : MonoBehaviour
     private Camera _cam;
     public GameObject roadNavM;
     public GameObject trailNavM;
-    public GameObject obsNavM;
     public Tilemap tilemap;
     public TileBase road;
     public TileBase trail;
-    public TileBase obs;
     private UnityEngine.Vector3 worldPosition;
     private Vector3Int dummy;  
-    public Transform[] objectsToRotate;
     public int money = 250;
-    
+    public bool spac = false;
     void Awake() 
     {
         _cam = Camera.main;
@@ -36,38 +33,24 @@ public class Roads_and_Trails : MonoBehaviour
     float distance;
     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     RaycastHit hitData;
+    if (Input.GetKeyDown("space")) {spac = !spac;}
     if(Physics.Raycast(ray, out hitData, 1000)) {
         worldPosition = hitData.point;
-        print(worldPosition);
-        }
-    if(Input.GetMouseButtonDown(0) && (money > 0)) {
+        print(worldPosition); }
+    if((Input.GetMouseButtonDown(0) && !spac) && (money > 0)) {
+        if (hitData.transform.gameObject != null && hitData.transform.tag == "tralfamadorians")
+        {   GameObject.Destroy(hitData.transform.gameObject); }
         dummy = Intizer(worldPosition);
         tilemap.SetTile(dummy, road);   
-        Instantiate(roadNavM, GridAligner(worldPosition),  UnityEngine.Quaternion.Euler(0,90,0));
-        money--;
-        }
-    if(Input.GetMouseButtonDown(1) && (money > 0)) {
+        Instantiate(trailNavM, GridAligner(worldPosition), UnityEngine.Quaternion.Euler(0,90,0));
+        money--; }
+    if((Input.GetMouseButtonDown(0) &&  spac) && (money > 0)) {
+        if (hitData.transform.gameObject != null && hitData.transform.tag == "tralfamadorians")
+        {   GameObject.Destroy(hitData.transform.gameObject); }
         dummy = Intizer(worldPosition);
         tilemap.SetTile(dummy, trail); 
-        Instantiate(trailNavM, GridAligner(worldPosition), UnityEngine.Quaternion.Euler(0,90,0));
-        money--;
-        }        
-    if(Input.GetKeyDown(KeyCode.Space)) {
-        dummy = Intizer(worldPosition);
-        tilemap.SetTile(dummy, obs);    
-        Instantiate(obsNavM, GridAligner(worldPosition),  UnityEngine.Quaternion.Euler(0,90,0));
-        }}
-    // if((Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(1)) && lineBool)
-    //     {
-    //     dummz = Intizer(GetMousePos());
-    //     if (dummz != dummy) {if (Mathf.Abs(dummz.x - dummy.x) > Mathf.Abs(dummz.y - dummy.y))
-    //     for (int i = 0; i < Mathf.Abs(dummz.x - dummy.x); i++) 
-    //     {
-    //     if (dummz.x - dummy.x > 0) tilemap.SetTile(new Vector3Int (i +dummyx), trail);
-    //     }
-    //     tilemap.SetTile(Intizer(worldPosition), trail);
-    //     lineBool = false;
-    //     }
+        Instantiate(roadNavM,   GridAligner(worldPosition), UnityEngine.Quaternion.Euler(0,90,0));
+        money--; }        }
     
     void OnMouseDrag() 
     {
@@ -114,7 +97,7 @@ public class Roads_and_Trails : MonoBehaviour
         int xi = (int)Math.Round(pos.x * 136f/67.36f); 
         int yi = (int)Math.Round(pos.z *  92f/45.45f); 
         int zi = 1; 
-        return (new Vector3Int (xi,yi,zi));
+        return (new Vector3Int (xi,yi-1,zi));
     }
 }
 

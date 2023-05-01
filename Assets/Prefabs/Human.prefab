@@ -82,6 +82,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7498883791279909096}
   agent: {fileID: 3613113501255726408}
   clock: {fileID: 0}
+  rat: {fileID: 0}
   lerpduration: 5
   timer: 0
   days: 0
@@ -153,7 +154,7 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!1 &2041546822748316917
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +236,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

@@ -801,8 +801,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'This is a prototype. There is currently no means to score, or for the
-    roads you place to impact the Navmesh. '
+  m_text: 'Z/X       - ZOOM IN/OUT
+
+    ARROW  - MOVE AROUND
+
+    CLICK    - PLACE
+    TRAIL OR WALL
+
+    SPACE  - SWITCH '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16027b8ef1d704f4390bbfb69aee07e9, type: 2}
   m_sharedMaterial: {fileID: 150679063072514469, guid: 16027b8ef1d704f4390bbfb69aee07e9, type: 2}

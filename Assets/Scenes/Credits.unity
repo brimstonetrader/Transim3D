@@ -778,8 +778,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 300, y: 50}
+  m_AnchoredPosition: {x: 35.8, y: 127.59}
+  m_SizeDelta: {x: 900, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2105375861
 MonoBehaviour:
@@ -801,7 +801,22 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Credits go here.
+  m_text: 'CODERS:                             ADVISORS:
+
+    -------------------------------------------------------
+
+    Noah
+    Morris                     Alyssa Chaffin
+
+    Rhett Booher                 Jeff
+    Runder
+
+    Caden McCarty               Dr. Goadrich
+
+    Ethan Thomas
+
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16027b8ef1d704f4390bbfb69aee07e9, type: 2}
   m_sharedMaterial: {fileID: 150679063072514469, guid: 16027b8ef1d704f4390bbfb69aee07e9, type: 2}
@@ -828,8 +843,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
