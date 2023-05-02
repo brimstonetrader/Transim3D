@@ -17,4 +17,31 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameView.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Prolouge8.unity
+    guid: 2914b34827b24844bb7abe192bdeaf11
+  - enabled: 1
+    path: Assets/Scenes/Prolouge1.unity
+    guid: 2dc7122bef3628d41971ed3ec2289f06
+  - enabled: 1
+    path: Assets/Scenes/Prolouge2.unity
+    guid: 3d0b9b80efabc4f44930cc63861bd59a
+  - enabled: 1
+    path: Assets/Scenes/Prolouge3.unity
+    guid: 75e18213ae4d91c409987af682888748
+  - enabled: 1
+    path: Assets/Scenes/Prolouge4.unity
+    guid: 73bfefe9c02a506438ae2ebb563c60c9
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Prolouge5.unity
+    guid: 2a030e7bdaa2cef409e6e407c9a368cc
+  - enabled: 1
+    path: Assets/Scenes/Prolouge6.unity
+    guid: 4435d2c7d9f187142a86ea6994fe2362
+  - enabled: 1
+    path: Assets/Scenes/Prolouge7.unity
+    guid: 410c3d9fcd6c451409d57fcdb6ce9026
   m_configObjects: {}
