@@ -155,7 +155,7 @@ public class FSM_Human : MonoBehaviour
 
     private void OnGUI()
     {
-        string content = currentState != null ? "   state:     " + currentState.name + " | money:     " + money.ToString() + " | score:     " + score.ToString() + " | time:     " + timer.ToString() + " | days:     " + days.ToString(): "";
+        string content = currentState != null ? "   state:   " + currentState.name + " | money:   " + money.ToString() + " | score:   " + Math.Round(score, 3).ToString() + " | time:   " + timer.ToString() + " | days:   " + days.ToString(): "";
         GUILayout.Label($"<color='black'><size=30>{content}</size></color>");
     }
 }

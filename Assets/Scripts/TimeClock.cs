@@ -40,7 +40,11 @@ public class TimeClock : MonoBehaviour
             timer += Time.deltaTime * timerSpeed;
             DisplayTime();
             print("Timer Speed" + timerSpeed);
-        }}
+        }
+        if(Input.GetKeyDown(KeyCode.N))
+            {SpeedingUp();}
+        if(Input.GetKeyDown(KeyCode.M))
+            {SlowingDown();}}
 
 
     void DisplayTime() 

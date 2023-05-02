@@ -295,7 +295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -150}
+  m_AnchoredPosition: {x: 0, y: -170.75}
   m_SizeDelta: {x: 221.7695, y: 56.1333}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &406220606
@@ -801,14 +801,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Z/X       - ZOOM IN/OUT
-
-    ARROW  - MOVE AROUND
-
-    CLICK    - PLACE
-    TRAIL OR WALL
-
-    SPACE  - SWITCH '
+  m_text: "Z/X       - ZOOM IN/OUT\nARROW  - MOVE AROUND\nCLICK    - PLACE TRAIL
+    OR WALL\nSPACE  - SWITCH \nSCORE = TOTAL AVG. PROPORTION OF TIME SPENT TRAVELING\nMINIMIZE
+    THIS!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16027b8ef1d704f4390bbfb69aee07e9, type: 2}
   m_sharedMaterial: {fileID: 150679063072514469, guid: 16027b8ef1d704f4390bbfb69aee07e9, type: 2}
